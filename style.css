@@ -8,44 +8,41 @@
 
 
   /* Spacing */
-  --container-padding: 20px;
-  --vertical-padding: 20px;
-
+  --large-container-padding: 20px 30px;
+  --small-height: 50px;
+  --vertical-padding: 50px;
 
   /* Borders */
-  --border: 3px solid var(--primary-black);
+  --border-width: 2.9px;
+  --border: var(--border-width) solid var(--primary-black);
 
   /* Breakpoints */
   --small-screen: 576px;
   --medium-screen: 768px;
   --large-screen: 992px;
   --extra-large-screen: 1200px;
+
+  /* Font size */
+  --large-text: 100px;
+  --secondary-text: 60px;
+  --para-text: 26px;
 }
 
-h1, p {
-  margin: 0;
-}
+/* global styles - START */
+body, h1, p { margin: 0; cursor: default;}
 
 body {
-  margin: 0;
   font-family: var(--primary-font);
-  font-size: 16px;
-  line-height: 1.5;
   color: var(--primary-black);
 }
 
-.bordered-section {
-  border: var(--border);
-  padding: var(--container-padding);
-}
-
-h1, h2, p {
+h1, h2, h5, p {
   margin: 0;
 }
 
 h1 {
   font-family: var(--primary-font);
-  font-size: 100px;
+  font-size: 85px;
   font-weight: 400;
 }
 
@@ -54,40 +51,95 @@ h2 {
   font-size: 60px;
   margin: 0;
   font-weight: 400;
+}
 
+h5 {
+  font-family: var(--primary-font);
+  font-weight: 400;
+  font-size: 20px;
 }
 
 p {
   font-family: var(--secondary-font);
   font-size: 26px;
 }
+/* global styles - END */
 
-.flex-container {
+.flexbox-vertical-center {
   display: flex;
+  align-items: center;
 }
 
 .flex-item {
   flex: 1;
 }
 
-main {
-  padding: var(--vertical-padding);
+a {
+  text-decoration: none;
+  color: var(--primary-black);
 }
 
-.footer__contact {
-  padding: var(--vertical-padding);
+.bordered-section {
+  border: var(--border);
+  padding: var(--large-container-padding);
 }
 
-.footer__copyright {
+header .bordered-section {
+  border-top: 0;
+}
+
+header, main, .footer__contact {
+  margin: 0 var(--vertical-padding);
+}
+
+main .main__intro {
+  height: 300px;
+}
+
+main > .bordered-section, .footer__contact, .footer__copyright, .footer__contact__links > div {
+  margin-top: calc(var(--border-width) * -1);
+}
+
+/* Add hover effect to change background color on links */
+main .main__project-links {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+main .main__project-links:hover {
+  /* background-color: #f2f2f2; */
+}
+
+/* footer */
+
+footer .footer__contact {
+  height: 200px;
+}
+
+footer .footer__contact.flexbox-vertical-center {
+  justify-content: space-between;
+}
+
+footer .footer__contact__links > div {
+  width: 300px;
+  margin: 20px 0 20px auto;
+}
+
+footer .footer__contact__links h5 {
+  padding-left: 10px;
+}
+
+footer .footer__copyright {
+  height: var(--small-height);
   border-top: var(--border);
 }
 
-footer {
-  padding: 10px 0; /* Adjust padding as needed */
+footer .footer__contact__links .bordered-section {
+  padding: 12px;
 }
 
-.footer__copyright__text {
+footer .footer__copyright__text  {
+  padding: 0 var(--vertical-padding);
   font-family: var(--secondary-font);
-  font-size: 18px;
-  margin: 0;
+  font-size: 1.2em;
 }
